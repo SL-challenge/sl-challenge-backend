@@ -1,28 +1,10 @@
 import express from 'express';
-import axios from 'axios';
+import unirest from 'unirest';
 const router = express.Router();
 
 // Get all users
 router.get('/', (req, res) => {
-  // axios.get('https://api.salesloft.com/v2/people.json', {
-  //   headers: {
-  //     Authorization: 'BEARER ' + process.env.APIKEY
-  //   }
-  // })
-  // .then((response) => {
-  //   console.log('success!');
-  //   console.log(response);
-  //   return res.send(response);
-  // })
-  // .catch((err) => {
-  //   console.log('error!');
-  //   console.log(err);
-  //   return res.send('error!');
-  // })
-  // return res.send('tada!');
-  const unirest = require("unirest");
-
-  const request = unirest("GET", "http://api.salesloft.com/v2/people.json");
+  const request = unirest("GET", "http://api.salesloft.com/v2/people.json?per_page=100");
 
   request.headers({
     "Postman-Token": "a20bf18c-f209-41af-92b3-279614de102e",
